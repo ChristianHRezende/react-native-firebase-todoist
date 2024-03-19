@@ -12,8 +12,17 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		51B2544DD34F4FD292BD1A0C /* LeagueSpartan-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E56E2757024A4AB293E19BBF /* LeagueSpartan-Black.ttf */; };
+		52686453A4D141C6AD046D58 /* LeagueSpartan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6E8C98D91454DE2B9A74FFC /* LeagueSpartan-Medium.ttf */; };
+		5702349E40D044269D5EFDE6 /* LeagueSpartan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 646EEE1C1F2647DBB906E2E1 /* LeagueSpartan-Thin.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Todoist-TodoistTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Todoist-TodoistTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9D67E71076EE4A1EA5029F06 /* LeagueSpartan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 869E25FA99EA4C9C8252AC1F /* LeagueSpartan-Bold.ttf */; };
+		B1A39536DACF4C0CB0132FC8 /* LeagueSpartan-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F19547C6BB58420F8E43D417 /* LeagueSpartan-ExtraLight.ttf */; };
+		B1EE2A79CB05470787CD4572 /* LeagueSpartan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2629148C505B401FA738FA03 /* LeagueSpartan-Light.ttf */; };
+		B846B1D1C71242BCA519A225 /* LeagueSpartan-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A26BDCB14114A0394CC5562 /* LeagueSpartan-ExtraBold.ttf */; };
+		C982B161BD4B46889EE6EA07 /* LeagueSpartan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A4571678C6E4F90903BC292 /* LeagueSpartan-Regular.ttf */; };
+		FDEEB0FCEEC443D580F8E1AB /* LeagueSpartan-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6D265BAEF704EEB8F1B46E4 /* LeagueSpartan-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +46,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Todoist/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Todoist/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Todoist-TodoistTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Todoist-TodoistTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2629148C505B401FA738FA03 /* LeagueSpartan-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Light.ttf"; path = "../assets/fonts/LeagueSpartan-Light.ttf"; sourceTree = "<group>"; };
+		2A4571678C6E4F90903BC292 /* LeagueSpartan-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Regular.ttf"; path = "../assets/fonts/LeagueSpartan-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Todoist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoist.debug.xcconfig"; path = "Target Support Files/Pods-Todoist/Pods-Todoist.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Todoist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoist.release.xcconfig"; path = "Target Support Files/Pods-Todoist/Pods-Todoist.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Todoist-TodoistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoist-TodoistTests.debug.xcconfig"; path = "Target Support Files/Pods-Todoist-TodoistTests/Pods-Todoist-TodoistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Todoist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Todoist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		646EEE1C1F2647DBB906E2E1 /* LeagueSpartan-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Thin.ttf"; path = "../assets/fonts/LeagueSpartan-Thin.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Todoist/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		869E25FA99EA4C9C8252AC1F /* LeagueSpartan-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Bold.ttf"; path = "../assets/fonts/LeagueSpartan-Bold.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Todoist-TodoistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoist-TodoistTests.release.xcconfig"; path = "Target Support Files/Pods-Todoist-TodoistTests/Pods-Todoist-TodoistTests.release.xcconfig"; sourceTree = "<group>"; };
+		8A26BDCB14114A0394CC5562 /* LeagueSpartan-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-ExtraBold.ttf"; path = "../assets/fonts/LeagueSpartan-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6E8C98D91454DE2B9A74FFC /* LeagueSpartan-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Medium.ttf"; path = "../assets/fonts/LeagueSpartan-Medium.ttf"; sourceTree = "<group>"; };
+		D6D265BAEF704EEB8F1B46E4 /* LeagueSpartan-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-SemiBold.ttf"; path = "../assets/fonts/LeagueSpartan-SemiBold.ttf"; sourceTree = "<group>"; };
+		E56E2757024A4AB293E19BBF /* LeagueSpartan-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-Black.ttf"; path = "../assets/fonts/LeagueSpartan-Black.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F19547C6BB58420F8E43D417 /* LeagueSpartan-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LeagueSpartan-ExtraLight.ttf"; path = "../assets/fonts/LeagueSpartan-ExtraLight.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +140,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				C337316E50294C5B8D3BB67C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -146,6 +165,23 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-Todoist-TodoistTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C337316E50294C5B8D3BB67C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E56E2757024A4AB293E19BBF /* LeagueSpartan-Black.ttf */,
+				869E25FA99EA4C9C8252AC1F /* LeagueSpartan-Bold.ttf */,
+				8A26BDCB14114A0394CC5562 /* LeagueSpartan-ExtraBold.ttf */,
+				F19547C6BB58420F8E43D417 /* LeagueSpartan-ExtraLight.ttf */,
+				2629148C505B401FA738FA03 /* LeagueSpartan-Light.ttf */,
+				C6E8C98D91454DE2B9A74FFC /* LeagueSpartan-Medium.ttf */,
+				2A4571678C6E4F90903BC292 /* LeagueSpartan-Regular.ttf */,
+				D6D265BAEF704EEB8F1B46E4 /* LeagueSpartan-SemiBold.ttf */,
+				646EEE1C1F2647DBB906E2E1 /* LeagueSpartan-Thin.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +279,15 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				51B2544DD34F4FD292BD1A0C /* LeagueSpartan-Black.ttf in Resources */,
+				9D67E71076EE4A1EA5029F06 /* LeagueSpartan-Bold.ttf in Resources */,
+				B846B1D1C71242BCA519A225 /* LeagueSpartan-ExtraBold.ttf in Resources */,
+				B1A39536DACF4C0CB0132FC8 /* LeagueSpartan-ExtraLight.ttf in Resources */,
+				B1EE2A79CB05470787CD4572 /* LeagueSpartan-Light.ttf in Resources */,
+				52686453A4D141C6AD046D58 /* LeagueSpartan-Medium.ttf in Resources */,
+				C982B161BD4B46889EE6EA07 /* LeagueSpartan-Regular.ttf in Resources */,
+				FDEEB0FCEEC443D580F8E1AB /* LeagueSpartan-SemiBold.ttf in Resources */,
+				5702349E40D044269D5EFDE6 /* LeagueSpartan-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +589,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -572,6 +617,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -579,7 +625,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -616,7 +668,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -636,6 +688,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -643,7 +696,13 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
