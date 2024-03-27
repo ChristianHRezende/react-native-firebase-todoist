@@ -1,18 +1,25 @@
-import React, {createContext, ReactNode, useContext} from 'react';
-import {useColorScheme} from 'react-native';
-
-interface ThemeContextProps {
-  mode: 'light' | 'dark';
-}
+import React, {createContext, ReactNode, useContext, useEffect} from 'react';
+import {useColorScheme} from 'nativewind';
+import {useColorScheme as useRNColorScheme} from 'react-native';
 
 interface ThemeContextProviderProps {
   children: ReactNode;
 }
 
-const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps);
+const ThemeContext = createContext<AppTheme.ThemeProps>(
+  {} as AppTheme.ThemeProps,
+);
 
 export default function ThemeProvider({children}: ThemeContextProviderProps) {
-  const colorScheme = useColorScheme() ?? 'dark';
+  const rnColorSchema = useRNColorScheme() ?? 'dark';
+  const {colorScheme, setColorScheme} = useColorScheme();
+
+  useEffect(() => {
+    if (rnColorSchema) {
+      setColorScheme(rnColorSchema);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rnColorSchema]);
 
   return (
     <ThemeContext.Provider

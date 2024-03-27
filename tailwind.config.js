@@ -7,13 +7,16 @@ module.exports = {
       colors: {
         primary: '#2DD8FE',
         secondary: '#C0D3D7',
+        success: '#4EF3A4',
+        warning: '#00CABE',
+        error: '#F34E4E',
         dark: {
           background: '#1D1C1C',
-          text: '#FFFFFF',
+          base: '#FFFFFF',
         },
         light: {
           background: '#FFFFFF',
-          text: '#1D1C1C',
+          base: '#1D1C1C',
         },
       },
     },

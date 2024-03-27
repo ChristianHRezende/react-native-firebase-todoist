@@ -1,18 +1,26 @@
+import {useThemeContext} from 'contexts/ThemeContext';
 import React from 'react';
 import {Text} from 'react-native';
 import {TypographyProps} from './types';
 
 export const Typography = ({
-  color = 'text',
+  color = 'base',
   heading = false,
   children,
   variant = 'base',
-  className,
+  customClassName = '',
 }: TypographyProps) => {
-  const fontWeight = heading ? 'bold' : 'normal';
-  const baseClassNames = `font-spartan text-${variant} text-${color} dark:text=${color} font-${fontWeight}`;
+  const {mode} = useThemeContext();
 
-  return (
-    <Text className={[baseClassNames, className].join(' ')}>{children}</Text>
-  );
+  function getTextColor() {
+    if (!['base', 'background'].includes(color)) {
+      return color;
+    }
+    return `${mode}-${color}`;
+  }
+
+  const fontWeight = heading ? 700 : 400;
+  const baseClassNames = `text-${variant} text-${getTextColor()} dark:text-${getTextColor()} font-[${fontWeight}] ${customClassName}`;
+
+  return <Text className={baseClassNames}>{children}</Text>;
 };

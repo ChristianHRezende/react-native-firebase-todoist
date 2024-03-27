@@ -16,7 +16,7 @@ export interface TypographyProps extends PropsWithChildren {
   variant?: TypographyVariant;
   color?: AppTheme.AppColors;
   heading?: boolean;
-  className?: string;
+  customClassName?: string;
 }
 
 export interface StyledTypographyProps extends Omit<TypographyProps, 'color'> {}
