@@ -20,7 +20,7 @@ export const Typography = ({
   }
 
   const fontWeight = heading ? 700 : 400;
-  const baseClassNames = `text-${variant} text-${getTextColor()} dark:text-${getTextColor()} font-[${fontWeight}] ${customClassName}`;
+  const classNames = `text-${variant} text-${getTextColor()} dark:text-${getTextColor()} font-[${fontWeight}] ${customClassName}`;
 
-  return <Text className={baseClassNames}>{children}</Text>;
+  return <Text className={classNames}>{children}</Text>;
 };
