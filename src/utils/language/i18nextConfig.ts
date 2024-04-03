@@ -13,17 +13,15 @@ const resources = {
   },
 };
 
-const initalizeI18Next = () => {
-  i18n.use(initReactI18next).init({
-    debug: false,
-    resources,
-    lng: LangCode.pt,
-    fallbackLng: LangCode.pt,
-    compatibilityJSON: 'v3',
-    interpolation: {
-      escapeValue: false,
-    },
-  });
-};
+i18n.use(initReactI18next).init({
+  debug: false,
+  resources,
+  lng: LangCode.en,
+  fallbackLng: LangCode.en,
+  compatibilityJSON: 'v3',
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
-export default {initalizeI18Next};
+export default i18n;

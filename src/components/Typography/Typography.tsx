@@ -1,7 +1,8 @@
-import {useThemeContext} from 'contexts/ThemeContext';
 import React from 'react';
 import {Text} from 'react-native';
 import {TypographyProps} from './types';
+
+import {getTextColor, getTextVariant} from './colorSchema';
 
 export const Typography = ({
   color = 'base',
@@ -10,17 +11,16 @@ export const Typography = ({
   variant = 'base',
   customClassName = '',
 }: TypographyProps) => {
-  const {mode} = useThemeContext();
+  const colorTheme = getTextColor(color);
+  const textVariant = getTextVariant(variant);
+  const fontWeight = heading ? 'font-bold' : 'font-base';
 
-  function getTextColor() {
-    if (!['base', 'background'].includes(color)) {
-      return color;
-    }
-    return `${mode}-${color}`;
-  }
-
-  const fontWeight = heading ? 700 : 400;
-  const classNames = `text-${variant} text-${getTextColor()} dark:text-${getTextColor()} font-[${fontWeight}] ${customClassName}`;
+  const classNames = [
+    textVariant,
+    colorTheme,
+    fontWeight,
+    customClassName,
+  ].join(' ');
 
   return <Text className={classNames}>{children}</Text>;
 };

@@ -5,27 +5,18 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {WelcomeScreen} from './src/features';
 import {useThemeContext} from 'contexts/ThemeContext';
-import i18nextConfig from 'utils/language/i18nextConfig';
-
-const init = async () => {
-  i18nextConfig.initalizeI18Next();
-};
+import {WelcomeScreen} from './src/features';
 
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   const {mode} = useThemeContext();
-
-  useEffect(() => {
-    init();
-  }, []);
 
   return (
     <NavigationContainer>

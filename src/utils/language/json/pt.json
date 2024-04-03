@@ -1,3 +1,8 @@
 {
-  "welcome.title": "Vamos Organizar Suas Tarefas"
+  "welcome.title": "Vamos organizar seu nó TODO",
+  "welcome.message": "Faça suas tarefas na nota e gerencie suas atividades prioritárias no dia a dia para atingir metas.",
+  "welcome.already.account": "Já tem uma conta?",
+
+  "get.started": "Começar",
+  "sign.in": "Entrar"
 }

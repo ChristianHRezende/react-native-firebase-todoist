@@ -1,3 +1,8 @@
 {
-  "welcome.title": "Let's Organize Your Node TODO"
+  "welcome.title": "Let's Organize Your Node TODO",
+  "welcome.message": "Make your todo in the note and manage your priority activity in daily life to achieve goals.",
+  "welcome.already.account": "Already have an account?",
+
+  "get.started": "Get Started",
+  "sign.in": "Sign In"
 }
