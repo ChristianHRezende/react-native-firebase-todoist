@@ -7,7 +7,7 @@
 
   "error": {
     "validation": {
-      "password": "password must have at least 8 chars and contains letters and numbers",
+      "password": "Password must have at least 8 chars and contains letters and numbers",
       "min": "must have at leats 1 character",
       "email": "input a valid email",
       "cpf": "input a valid cpf"

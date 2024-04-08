@@ -36,7 +36,12 @@ export const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
           navigate('SignUp');
         }}
       />
-      <Button title={t('welcome.already.account')} />
+      <Button
+        title={t('welcome.already.account')}
+        onPress={() => {
+          navigate('SignIn');
+        }}
+      />
     </Container>
   );
 };
