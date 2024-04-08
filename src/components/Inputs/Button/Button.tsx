@@ -7,7 +7,7 @@ import {getButtonColor} from './colorSchema';
 
 interface ButtonProps extends BaseComponentPropsWithChildren, RNButtonProps {
   variant?: 'contained';
-  color?: AppTheme.AppColors;
+  color?: AppTheme.AppColorsType;
   customClassName?: string;
 }
 

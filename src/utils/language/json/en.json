@@ -1,8 +1,19 @@
 {
+  "back": "Back",
+  "get.started": "Get Started",
+  "name": "Name",
+  "error": {
+    "validation": {
+      "password": "password must have at least 8 chars and contains letters and numbers",
+      "min": "must have at leats 1 character",
+      "email": "input a valid email",
+      "cpf": "input a valid cpf"
+    }
+  },
+  "submit": "Confirm",
+  "sign.in": "Sign In",
+  "password": "Password",
   "welcome.title": "Let's Organize Your Node TODO",
   "welcome.message": "Make your todo in the note and manage your priority activity in daily life to achieve goals.",
-  "welcome.already.account": "Already have an account?",
-
-  "get.started": "Get Started",
-  "sign.in": "Sign In"
+  "welcome.already.account": "Already have an account?"
 }

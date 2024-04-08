@@ -1,4 +1,4 @@
-const colorSchema: Record<AppTheme.AppColors, string> = {
+const colorSchema: Record<AppTheme.AppColorsType, string> = {
   primary: 'text-primary dark:text-primary',
   secondary: 'text-secondary dark:text-secondary',
   base: 'text-base dark:text-background',
@@ -8,6 +8,6 @@ const colorSchema: Record<AppTheme.AppColors, string> = {
   error: 'text-error dark:text-error',
 };
 
-export function getTextColor(colorName: AppTheme.AppColors) {
+export function getTextColor(colorName: AppTheme.AppColorsType) {
   return colorSchema[colorName];
 }

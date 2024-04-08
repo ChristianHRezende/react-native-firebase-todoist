@@ -8,6 +8,7 @@ export const Container = ({
   safeAreViewProps,
   scrollViewProps,
   screen,
+  viewClassname = '',
 }: ContainerProps) => {
   if (screen) {
     return (
@@ -15,12 +16,12 @@ export const Container = ({
         className={'bg-light-background dark:bg-dark-background h-100vh'}
         {...safeAreViewProps}>
         <ScrollView {...scrollViewProps}>
-          <View className="container mx-auto px-4 py-6 h-screen flex-auto">
+          <View className={'container px-4 h-screen ' + viewClassname}>
             {children}
           </View>
         </ScrollView>
       </SafeAreaView>
     );
   }
-  return <View className="container mx-auto px-4 py-2">{children}</View>;
+  return <View className="container px-4 py-2">{children}</View>;
 };

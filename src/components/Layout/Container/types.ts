@@ -6,4 +6,5 @@ export interface ContainerProps extends PropsWithChildren {
   safeAreViewProps?: SafeAreaProviderProps;
   scrollViewProps?: ScrollViewProps;
   screen?: boolean;
+  viewClassname?: string;
 }

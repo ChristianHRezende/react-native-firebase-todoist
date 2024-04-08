@@ -1,6 +1,6 @@
-import {TypographyVariant} from './types';
+import {TypographyVariant} from '../../components/Typography/types';
 
-const colorSchema: Record<AppTheme.AppColors, string> = {
+const colorSchema: Record<AppTheme.AppColorsType, string> = {
   primary: 'text-primary dark:text-primary',
   secondary: 'text-secondary dark:text-secondary',
   base: 'text-light-base dark:text-dark-base',
@@ -23,7 +23,7 @@ const variantSchema: Record<TypographyVariant, string> = {
   ['6xl']: 'text-6xl',
 };
 
-export function getTextColor(colorName: AppTheme.AppColors) {
+export function getTextColor(colorName: AppTheme.AppColorsType) {
   return colorSchema[colorName];
 }
 

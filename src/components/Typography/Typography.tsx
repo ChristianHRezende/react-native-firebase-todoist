@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 import {TypographyProps} from './types';
 
-import {getTextColor, getTextVariant} from './colorSchema';
+import {getTextColor, getTextVariant} from '../../utils/styles/colorSchema';
 
 export const Typography = ({
   color = 'base',

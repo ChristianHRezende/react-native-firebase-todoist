@@ -1,14 +1,21 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamsList} from '../../../../../App';
+
 import imgSource from 'assets/images/img.png';
 import {Button, Container, Typography} from 'components';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image} from 'react-native';
 
-export const WelcomeScreen = ({}) => {
+type WelcomeScreenProps = NativeStackScreenProps<RootStackParamsList, 'Home'>;
+
+export const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
   const {t} = useTranslation();
+  const {navigate} = navigation;
+
   return (
-    <Container screen>
-      <Image source={imgSource} resizeMode="contain" className="w-full" />
+    <Container screen viewClassname="flex-col space-y-8">
+      <Image source={imgSource} resizeMode="contain" className="w-full mt-12" />
       <Typography
         variant="3xl"
         heading
@@ -22,6 +29,9 @@ export const WelcomeScreen = ({}) => {
         variant="contained"
         title={t('get.started')}
         customClassName="self-center"
+        onPress={() => {
+          navigate('SignUp');
+        }}
       />
       <Button title={t('welcome.already.account')} />
     </Container>

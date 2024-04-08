@@ -14,7 +14,7 @@ export type TypographyVariant =
 
 export interface TypographyProps extends PropsWithChildren {
   variant?: TypographyVariant;
-  color?: AppTheme.AppColors;
+  color?: AppTheme.AppColorsType;
   heading?: boolean;
   customClassName?: string;
 }

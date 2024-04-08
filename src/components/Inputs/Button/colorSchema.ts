@@ -1,4 +1,4 @@
-const colorSchema: Record<AppTheme.AppColors, string> = {
+const colorSchema: Record<AppTheme.AppColorsType, string> = {
   primary: 'bg-primary dark:bg-primary',
   secondary: 'bg-secondary dark:bg-secondary',
   base: 'bg-light-base dark:bg-dark-background',
@@ -8,6 +8,6 @@ const colorSchema: Record<AppTheme.AppColors, string> = {
   error: 'bg-error dark:bg-error',
 };
 
-export function getButtonColor(colorName: AppTheme.AppColors) {
+export function getButtonColor(colorName: AppTheme.AppColorsType) {
   return colorSchema[colorName];
 }
