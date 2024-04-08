@@ -1,12 +1,7 @@
 import React from 'react';
+import {CombineProvider} from './types/types';
 
-export const combineComponents = (
-  ...components: (({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => React.JSX.Element)[]
-) => {
+export const combineComponents = (...components: CombineProvider[]) => {
   return components.reduce(
     (AccumulatedComponents, CurrentComponent) => {
       return ({children}: React.PropsWithChildren) => {

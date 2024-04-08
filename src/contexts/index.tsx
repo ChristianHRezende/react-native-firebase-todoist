@@ -1,5 +1,8 @@
 import {combineComponents} from './utils/combineProviders';
 import ThemeProvider from './ThemeContext';
+import {ToastProvider} from 'react-native-toast-notifications';
+import {CombineProvider} from './utils/types/types';
 
-const providers = [ThemeProvider];
+const providers = [ThemeProvider, ToastProvider as CombineProvider];
+
 export const AppCombineProvider = combineComponents(...providers);

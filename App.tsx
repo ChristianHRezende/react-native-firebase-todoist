@@ -10,19 +10,25 @@ import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Container} from 'components';
 import {useThemeContext} from 'contexts/ThemeContext';
 import {SignUpScreen} from 'features/signUp';
+import useInitFirebase from 'hooks/useInitFirebase';
+import {useTranslation} from 'react-i18next';
 import {WelcomeScreen} from './src/features';
-
-export type RootStackParamsList = {
-  Home: undefined;
-  SignUp: undefined;
-};
+import {HomeScreen} from 'features/home/views/HomeScreen/HomeScreen';
+import {RootStackParamsList} from 'types/navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 
 function App(): React.JSX.Element {
   const {mode, colors} = useThemeContext();
+  const {t} = useTranslation();
+  const {user, initializing} = useInitFirebase();
+
+  if (initializing) {
+    return <Container screen initializing={initializing} />;
+  }
 
   return (
     <NavigationContainer>
@@ -30,9 +36,9 @@ function App(): React.JSX.Element {
         barStyle={mode === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor={colors.background}
       />
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName={user ? 'Home' : 'Welcome'}>
         <Stack.Screen
-          name="Home"
+          name="Welcome"
           component={WelcomeScreen}
           options={{
             headerShown: false,
@@ -43,6 +49,21 @@ function App(): React.JSX.Element {
           component={SignUpScreen}
           options={{
             headerStyle: {backgroundColor: colors.background},
+            headerTitle: t('get.started'),
+            headerTitleStyle: {
+              color: colors.base,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerStyle: {backgroundColor: colors.background},
+            headerTitle: t('home'),
+            headerTitleStyle: {
+              color: colors.base,
+            },
           }}
         />
       </Stack.Navigator>

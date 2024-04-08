@@ -1,13 +1,16 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamsList} from '../../../../../App';
 
 import imgSource from 'assets/images/img.png';
 import {Button, Container, Typography} from 'components';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image} from 'react-native';
+import {RootStackParamsList} from 'types/navigation';
 
-type WelcomeScreenProps = NativeStackScreenProps<RootStackParamsList, 'Home'>;
+type WelcomeScreenProps = NativeStackScreenProps<
+  RootStackParamsList,
+  'Welcome'
+>;
 
 export const WelcomeScreen = ({navigation}: WelcomeScreenProps) => {
   const {t} = useTranslation();

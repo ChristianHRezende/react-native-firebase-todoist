@@ -11,9 +11,13 @@
       "min": "must have at leats 1 character",
       "email": "input a valid email",
       "cpf": "input a valid cpf"
+    },
+    "form": {
+      "wrong.data": "Wrong data"
     }
   },
   "submit": "Confirm",
+  "success": "Success",
   "sign.in": "Sign In",
   "password": "Password",
   "welcome.title": "Let's Organize Your Node TODO",

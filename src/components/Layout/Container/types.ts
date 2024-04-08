@@ -7,4 +7,5 @@ export interface ContainerProps extends PropsWithChildren {
   scrollViewProps?: ScrollViewProps;
   screen?: boolean;
   viewClassname?: string;
+  initializing?: boolean;
 }

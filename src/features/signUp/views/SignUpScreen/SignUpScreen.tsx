@@ -3,15 +3,22 @@ import {Button, Container, FormTextInput} from 'components';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
+import auth from '@react-native-firebase/auth';
 
 import schema from './schema';
+import {useToast} from 'react-native-toast-notifications';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamsList} from 'types/navigation';
 
-export const SignUpScreen = ({}) => {
+type SignUpScreenProps = NativeStackScreenProps<RootStackParamsList, 'SignUp'>;
+
+export const SignUpScreen = ({}: SignUpScreenProps) => {
   const {t} = useTranslation();
-
+  const toast = useToast();
   const {
     control,
     formState: {errors},
+    handleSubmit,
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -20,6 +27,19 @@ export const SignUpScreen = ({}) => {
       cpf: '',
       password: '',
     },
+  });
+  console.log({errors});
+
+  const submit = handleSubmit(values => {
+    const {email, password} = values;
+    try {
+      auth().createUserWithEmailAndPassword(email, password);
+      toast.show(t('success'));
+    } catch (error) {
+      toast.show(t('error.form.wrong.data'), {
+        type: 'error',
+      });
+    }
   });
 
   return (
@@ -57,6 +77,9 @@ export const SignUpScreen = ({}) => {
               onChangeText={field.onChange}
               error={!!errors.name}
               helperText={errors.name?.message}
+              keyboardType="email-address"
+              textContentType="emailAddress"
+              autoCapitalize={'none'}
             />
           );
         }}
@@ -104,6 +127,7 @@ export const SignUpScreen = ({}) => {
         variant="contained"
         title={t('submit')}
         customClassName="self-center"
+        onPress={submit}
       />
     </Container>
   );
