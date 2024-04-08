@@ -1,7 +1,10 @@
 {
   "back": "Back",
+  "cpf": "CPF",
+  "email": "Email",
   "get.started": "Get Started",
   "name": "Name",
+
   "error": {
     "validation": {
       "password": "password must have at least 8 chars and contains letters and numbers",

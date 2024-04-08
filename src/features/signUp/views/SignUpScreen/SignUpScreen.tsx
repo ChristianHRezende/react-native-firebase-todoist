@@ -33,6 +33,7 @@ export const SignUpScreen = ({}) => {
           return (
             <FormTextInput
               {...fieldProps}
+              className="mb-2"
               placeholder={t('name')}
               onChangeText={field.onChange}
               error={!!errors.name}
@@ -51,6 +52,7 @@ export const SignUpScreen = ({}) => {
           return (
             <FormTextInput
               {...fieldProps}
+              className="mb-2"
               placeholder={t('email')}
               onChangeText={field.onChange}
               error={!!errors.name}
@@ -69,6 +71,7 @@ export const SignUpScreen = ({}) => {
           return (
             <FormTextInput
               {...fieldProps}
+              className="mb-2"
               placeholder={t('cpf')}
               onChangeText={field.onChange}
               error={!!errors.name}
@@ -87,6 +90,7 @@ export const SignUpScreen = ({}) => {
           return (
             <FormTextInput
               {...fieldProps}
+              className="mb-2"
               placeholder={t('password')}
               onChangeText={field.onChange}
               error={!!errors.name}

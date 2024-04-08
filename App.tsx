@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator<RootStackParamsList>();
 
 function App(): React.JSX.Element {
   const {mode, colors} = useThemeContext();
-  console.log(mode, colors.background);
+
   return (
     <NavigationContainer>
       <StatusBar
