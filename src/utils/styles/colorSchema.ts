@@ -8,6 +8,7 @@ const colorSchema: Record<AppTheme.AppColorsType, string> = {
   success: 'text-success dark:text-success',
   warning: 'text-warning dark:text-warning',
   error: 'text-error dark:text-error',
+  gray: 'text-light-gray dark:text-dark-gray',
 };
 
 const variantSchema: Record<TypographyVariant, string> = {

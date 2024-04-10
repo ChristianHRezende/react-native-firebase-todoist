@@ -30,7 +30,8 @@ declare global {
       | 'background'
       | 'success'
       | 'warning'
-      | 'error';
+      | 'error'
+      | 'gray';
 
     type ColorScheme = 'light' | 'dark';
     type Colors = Record<AppColorsType, string>;

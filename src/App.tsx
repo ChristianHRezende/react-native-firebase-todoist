@@ -10,7 +10,7 @@ import {HomeScreen} from 'features/home/views/HomeScreen/HomeScreen';
 import useInitFirebase from 'hooks/useInitFirebase';
 import {useTranslation} from 'react-i18next';
 import {RootStackParamsList} from 'types/navigation';
-import {SignInScreen, SignUpScreen, WelcomeScreen} from './src/features';
+import {SignInScreen, SignUpScreen, WelcomeScreen} from './features';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 
@@ -64,10 +64,6 @@ function App(): React.JSX.Element {
           component={HomeScreen}
           options={{
             headerStyle: {backgroundColor: colors.background},
-            headerTitle: t('home'),
-            headerTitleStyle: {
-              color: colors.base,
-            },
           }}
         />
       </Stack.Navigator>

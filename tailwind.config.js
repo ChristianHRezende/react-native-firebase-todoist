@@ -11,10 +11,12 @@ module.exports = {
         warning: '#00CABE',
         error: '#F34E4E',
         dark: {
+          gray: '#B1B1B1',
           background: '#1D1C1C',
           base: '#FFFFFF',
         },
         light: {
+          gray: '#898989',
           background: '#FFFFFF',
           base: '#1D1C1C',
         },

@@ -3,8 +3,11 @@
   "cpf": "CPF",
   "email": "Email",
   "get.started": "Get Started",
+  "home": {
+    "header.title": "Welcome to Notes",
+    "header.subtitle": "Greate nice day for managing Task"
+  },
   "name": "Name",
-
   "error": {
     "validation": {
       "password": "Password must have at least 8 chars and contains letters and numbers",
