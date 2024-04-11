@@ -12,18 +12,21 @@ export const Container = ({
   screen,
   viewClassname = '',
   initializing = false,
+  header = false,
 }: ContainerProps) => {
   if (screen) {
+    const height = header ? 'h-100vh' : 'h-[calc(100vh - 100px)]';
+    const lottieViewStyle = {width: 200, height: 200};
     return (
       <SafeAreaView
-        className={'bg-light-background dark:bg-dark-background h-100vh'}
+        className={`bg-light-background dark:bg-dark-background ${height}`}
         {...safeAreViewProps}>
         <ScrollView {...scrollViewProps}>
           <View className={'container px-4 h-screen ' + viewClassname}>
             {initializing ? (
               <LottieView
                 source={animationPath}
-                style={{width: 200, height: 200}}
+                style={lottieViewStyle}
                 autoPlay
                 loop
               />

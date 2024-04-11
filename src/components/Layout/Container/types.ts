@@ -8,4 +8,5 @@ export interface ContainerProps extends PropsWithChildren {
   screen?: boolean;
   viewClassname?: string;
   initializing?: boolean;
+  header?: boolean;
 }
