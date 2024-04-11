@@ -1,0 +1,1 @@
+export {HomeBottomMenu} from './HomeBottomMenu';

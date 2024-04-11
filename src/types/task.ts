@@ -4,4 +4,8 @@ export type Task = {
   description: string;
   startDateTime: Date;
   endDateTime: Date;
+  priority: boolean;
+  reminder: Date;
+  isReminded: boolean;
+  done: boolean;
 };

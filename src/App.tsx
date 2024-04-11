@@ -10,7 +10,12 @@ import {HomeScreen} from 'features/home/views/HomeScreen/HomeScreen';
 import useInitFirebase from 'hooks/useInitFirebase';
 import {useTranslation} from 'react-i18next';
 import {RootStackParamsList} from 'types/navigation';
-import {SignInScreen, SignUpScreen, WelcomeScreen} from './features';
+import {
+  SignInScreen,
+  SignUpScreen,
+  TaskFormScreen,
+  WelcomeScreen,
+} from './features';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 
@@ -18,6 +23,13 @@ function App(): React.JSX.Element {
   const {mode, colors} = useThemeContext();
   const {t} = useTranslation();
   const {user, initializing} = useInitFirebase();
+  const navigatorScreenOptions = {
+    headerStyle: {backgroundColor: colors.background},
+    headerTitleStyle: {
+      color: colors.base,
+    },
+    headerShown: false,
+  };
 
   if (initializing) {
     return <Container screen initializing={initializing} />;
@@ -29,43 +41,26 @@ function App(): React.JSX.Element {
         barStyle={mode === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor={colors.background}
       />
-      <Stack.Navigator initialRouteName={user ? 'Home' : 'Welcome'}>
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
+      <Stack.Navigator
+        initialRouteName={user ? 'Home' : 'Welcome'}
+        screenOptions={navigatorScreenOptions}>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
           options={{
-            headerStyle: {backgroundColor: colors.background},
             headerTitle: t('get.started'),
-            headerTitleStyle: {
-              color: colors.base,
-            },
           }}
         />
         <Stack.Screen
           name="SignIn"
           component={SignInScreen}
           options={{
-            headerStyle: {backgroundColor: colors.background},
             headerTitle: t('sign.in'),
-            headerTitleStyle: {
-              color: colors.base,
-            },
           }}
         />
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerStyle: {backgroundColor: colors.background},
-          }}
-        />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="TaskForm" component={TaskFormScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

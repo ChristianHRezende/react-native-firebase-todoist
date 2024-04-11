@@ -7,6 +7,9 @@
     "header.title": "Welcome to Notes",
     "header.subtitle": "Greate nice day for managing Task"
   },
+  "add.task": {
+    "header.title": "Create New Task"
+  },
   "name": "Name",
   "error": {
     "validation": {

@@ -6,30 +6,66 @@ import {TouchableOpacity, View} from 'react-native';
 import {useToast} from 'react-native-toast-notifications';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as S from './HomeHeader.styled';
+import {useThemeContext} from 'contexts/ThemeContext';
 
-type HomeHeaderProps = {};
+type HomeHeaderVariant = 'menu' | 'back';
 
-export const HomeHeader: React.FC<HomeHeaderProps> = ({}) => {
+type HomeHeaderProps = {
+  variant?: HomeHeaderVariant;
+  navigation?: {
+    goBack: () => void;
+  };
+  title?: string;
+  subtitle?: string;
+};
+
+const ICONS = {
+  menu: 'bars',
+  back: 'arrow-left',
+};
+
+export const HomeHeader: React.FC<HomeHeaderProps> = ({
+  variant = 'back',
+  navigation,
+  title,
+  subtitle,
+}) => {
   const {t} = useTranslation();
+  const {colors} = useThemeContext();
   const toast = useToast();
   const handleDrawerButtonMenuPress = () => {
     toast.show('WIP');
   };
+  const userImageHidden = variant !== 'menu';
+  function handleBackPress() {
+    navigation?.goBack?.();
+  }
+
+  const handleLeftButtonClick = {
+    menu: handleDrawerButtonMenuPress,
+    back: handleBackPress,
+  }[variant];
 
   return (
-    <View className="bg-light-background dark:bg-dark-background w-screen flex-row justify-between items-center px-6">
-      <TouchableOpacity onPress={handleDrawerButtonMenuPress}>
-        <Icon name={'bars'} size={24} color={'#AAAAAA'} />
+    <View className="bg-light-background dark:bg-dark-background w-screen flex-row justify-between items-center px-6 pt-16">
+      <TouchableOpacity onPress={handleLeftButtonClick}>
+        <Icon name={ICONS[variant]} size={24} color={colors.gray} />
       </TouchableOpacity>
-      <View className="flex-col justify-center space-y-0.5 w-48">
+      <View className="flex-col justify-center space-y-0.5 w-48 items-center">
         <Typography customClassName="text-center">
-          {`${t('home.header.title')}`}
+          {title ?? `${t('home.header.title')}`}
         </Typography>
-        <Typography variant="xs" color="gray" customClassName="text-center">
-          {t('home.header.subtitle')}
-        </Typography>
+        {!title || !!subtitle ? (
+          <Typography variant="xs" color="gray" customClassName="text-center">
+            {!title ? t('home.header.subtitle') : subtitle}
+          </Typography>
+        ) : null}
       </View>
-      <S.UserImage source={UserImage} alt="User Image" />
+      <S.UserImage
+        source={UserImage}
+        alt="User Image"
+        hidden={userImageHidden}
+      />
     </View>
   );
 };
