@@ -6,6 +6,7 @@ const colorSchema: Record<AppTheme.AppColorsType, string> = {
   success: 'bg-success dark:bg-success',
   warning: 'bg-warning dark:bg-warning',
   error: 'bg-error dark:bg-error',
+  gray: 'bg-light-gray dark:bg-dark-gray',
 };
 
 export function getButtonColor(colorName: AppTheme.AppColorsType) {

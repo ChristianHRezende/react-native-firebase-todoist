@@ -10,6 +10,20 @@
   "add.task": {
     "header.title": "Create New Task"
   },
+  "description": "Description",
+  "select.date": "Select the date",
+  "select.time": "Select time",
+  "priority": "Priority",
+  "tittle.task": "Tittle Task",
+  "note": "Note",
+  "from": "From",
+  "to": "To",
+  "high": "HIGH",
+  "medium": "MEDIUM",
+  "low": "LOW",
+  "at": "At",
+  "reminder": "Reminder",
+  "title": "Title",
   "name": "Name",
   "error": {
     "validation": {

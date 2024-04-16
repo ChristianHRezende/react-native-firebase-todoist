@@ -1,6 +1,7 @@
-import {CustomTextInputProps, TextInput, Typography} from 'components';
+import {CustomTextInputProps, TextInput} from 'components';
 import React from 'react';
 import {View} from 'react-native';
+import {FormHelperText} from '../FormHelperText';
 
 interface FormTextInputProps extends CustomTextInputProps {
   helperText?: string;
@@ -12,9 +13,7 @@ export const FormTextInput = (props: FormTextInputProps) => {
     <View className={className}>
       <TextInput {...fieldProps} error={error} />
       {helperText ? (
-        <Typography variant="sm" color={error ? 'error' : 'secondary'}>
-          {helperText}
-        </Typography>
+        <FormHelperText error={error}>{helperText}</FormHelperText>
       ) : null}
     </View>
   );
