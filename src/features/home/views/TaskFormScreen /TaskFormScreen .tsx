@@ -1,31 +1,21 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useMutation, useQuery} from '@tanstack/react-query';
 import {
   Button,
+  CircularProgress,
   Container,
+  FormButtonsListSelector,
   FormContainer,
-  FormHelperText,
+  FormDateTimePicker,
   FormTextInput,
   Typography,
 } from 'components';
 import dayjs from 'dayjs';
 import {HomeHeader} from 'features/home/components';
-import {
-  createTask,
-  getTaskById,
-  updateTask,
-} from 'features/home/services/taskServices';
-import {
-  CreateRequestTask,
-  UpdateRequestTask,
-} from 'features/home/services/types';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
-import {Circle} from 'react-native-progress';
 import {useToast} from 'react-native-toast-notifications';
 import {RootStackParamsList} from 'types/navigation';
 import {TaskPriority} from 'types/task';
@@ -40,7 +30,7 @@ export type TaskFormScreenProps = NativeStackScreenProps<
 >;
 
 export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
-  const {id = null} = route.params;
+  const id = route.params?.id ?? null;
   const {t} = useTranslation();
   const toast = useToast();
 
@@ -114,43 +104,33 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
             <Controller
               name="startDate"
               control={control}
-              render={({field: {onChange, ...restFieldProps}}) => (
-                <View>
-                  <DateTimePicker
-                    disabled={loading}
-                    onChange={(_, date) => {
-                      onChange(date);
-                    }}
-                    minimumDate={dayjs().toDate()}
-                    {...restFieldProps}
-                  />
-                  {errors.startDate ? (
-                    <FormHelperText error={!!errors.startDate}>
-                      {errors.startDate.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  minimumDate={dayjs().toDate()}
+                  error={!!errors.startDate}
+                  helperText={errors.startDate?.message}
+                  {...restFieldProps}
+                />
               )}
             />
             <Controller
               name="startTime"
               control={control}
-              render={({field: {onChange, ...restFieldProps}}) => (
-                <View>
-                  <DateTimePicker
-                    disabled={loading}
-                    mode="time"
-                    onChange={(_, date) => {
-                      onChange(date);
-                    }}
-                    {...restFieldProps}
-                  />
-                  {errors.startTime ? (
-                    <FormHelperText error={!!errors.startTime}>
-                      {errors.startTime.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  mode="time"
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  error={!!errors.startTime}
+                  helperText={errors.startTime?.message}
+                  {...restFieldProps}
+                />
               )}
             />
           </View>
@@ -160,43 +140,33 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
             <Controller
               name="endDate"
               control={control}
-              render={({field: {onChange, ...restFieldProps}}) => (
-                <View>
-                  <DateTimePicker
-                    disabled={loading}
-                    onChange={(_, date) => {
-                      onChange(date);
-                    }}
-                    minimumDate={watchStartDate}
-                    {...restFieldProps}
-                  />
-                  {errors.endDate ? (
-                    <FormHelperText error={!!errors.endDate}>
-                      {errors.endDate.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  minimumDate={watchStartDate}
+                  error={!!errors.endDate}
+                  helperText={errors.endDate?.message}
+                  {...restFieldProps}
+                />
               )}
             />
             <Controller
               name="endTime"
               control={control}
-              render={({field: {onChange, ...restFieldProps}}) => (
-                <View>
-                  <DateTimePicker
-                    disabled={loading}
-                    mode="time"
-                    onChange={(_, date) => {
-                      onChange(date);
-                    }}
-                    {...restFieldProps}
-                  />
-                  {errors.endTime ? (
-                    <FormHelperText error={!!errors.endTime}>
-                      {errors.endTime.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  mode="time"
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  error={!!errors.endTime}
+                  helperText={errors.endTime?.message}
+                  {...restFieldProps}
+                />
               )}
             />
           </View>
@@ -210,32 +180,29 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
                 onChange(priority);
               }
               return (
-                <View className="flex-row justify-between items-center">
-                  <Button
-                    size="small"
-                    title={t('high')}
-                    variant="contained"
-                    color="error"
-                    onPress={() => handlePriorityPress(TaskPriority.HIGH)}
-                    disabled={value === TaskPriority.HIGH || loading}
-                  />
-                  <Button
-                    size="small"
-                    title={t('medium')}
-                    variant="contained"
-                    color="primary"
-                    onPress={() => handlePriorityPress(TaskPriority.MEDIUM)}
-                    disabled={value === TaskPriority.MEDIUM || loading}
-                  />
-                  <Button
-                    size="small"
-                    title={t('low')}
-                    variant="contained"
-                    color="success"
-                    onPress={() => handlePriorityPress(TaskPriority.LOW)}
-                    disabled={value === TaskPriority.LOW || loading}
-                  />
-                </View>
+                <FormButtonsListSelector
+                  loading={loading}
+                  data={[
+                    {
+                      title: t('high'),
+                      color: 'error',
+                      onPress: () => handlePriorityPress(TaskPriority.HIGH),
+                      disabled: value === TaskPriority.HIGH || loading,
+                    },
+                    {
+                      title: t('medium'),
+                      color: 'primary',
+                      onPress: () => handlePriorityPress(TaskPriority.MEDIUM),
+                      disabled: value === TaskPriority.MEDIUM || loading,
+                    },
+                    {
+                      title: t('low'),
+                      color: 'error',
+                      onPress: () => handlePriorityPress(TaskPriority.LOW),
+                      disabled: value === TaskPriority.LOW || loading,
+                    },
+                  ]}
+                />
               );
             }}
           />
@@ -246,36 +213,32 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
             <Controller
               name="reminder"
               control={control}
-              render={({field}) => (
-                <View>
-                  <DateTimePicker disabled={loading} {...field} />
-                  {errors.reminder ? (
-                    <FormHelperText error={!!errors.reminder}>
-                      {errors.reminder.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  error={!!errors.reminder}
+                  helperText={errors.reminder?.message}
+                  {...restFieldProps}
+                />
               )}
             />
             <Controller
               name="reminderTime"
               control={control}
-              render={({field: {onChange, ...restFieldProps}}) => (
-                <View>
-                  <DateTimePicker
-                    disabled={loading}
-                    mode="time"
-                    onChange={(_, date) => {
-                      onChange(date);
-                    }}
-                    {...restFieldProps}
-                  />
-                  {errors.reminderTime ? (
-                    <FormHelperText error={!!errors.reminderTime}>
-                      {errors.reminderTime.message}
-                    </FormHelperText>
-                  ) : null}
-                </View>
+              render={({field: {onChange, ref, ...restFieldProps}}) => (
+                <FormDateTimePicker
+                  disabled={loading}
+                  mode="time"
+                  onChange={(_, date) => {
+                    onChange(date);
+                  }}
+                  error={!!errors.reminderTime}
+                  helperText={errors.reminderTime?.message}
+                  {...restFieldProps}
+                />
               )}
             />
           </View>
@@ -285,11 +248,11 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
           <Controller
             name="title"
             control={control}
-            render={({field}) => (
+            render={({field: {ref, ...restFieldProps}}) => (
               <FormTextInput
-                {...field}
+                {...restFieldProps}
                 disabled={loading}
-                onChangeText={field.onChange}
+                onChangeText={restFieldProps.onChange}
                 error={!!errors.title}
                 helperText={errors.title?.message}
               />
@@ -301,11 +264,11 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
           <Controller
             name="description"
             control={control}
-            render={({field}) => (
+            render={({field: {ref, ...restFieldProps}}) => (
               <FormTextInput
-                {...field}
+                {...restFieldProps}
                 disabled={loading}
-                onChangeText={field.onChange}
+                onChangeText={restFieldProps.onChange}
                 error={!!errors.description}
                 helperText={errors.description?.message}
               />
@@ -313,7 +276,7 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
           />
         </FormContainer>
         {createTaskMt.isPending ? (
-          <Circle size={30} indeterminate className="self-center mt-2" />
+          <CircularProgress />
         ) : (
           <Button
             variant="contained"
