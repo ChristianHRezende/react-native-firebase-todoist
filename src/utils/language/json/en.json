@@ -5,15 +5,19 @@
   "get.started": "Get Started",
   "home": {
     "header.title": "Welcome to Notes",
-    "header.subtitle": "Greate nice day for managing Task"
+    "header.subtitle": "Greate nice day for managing Task",
+    "home": "Home"
   },
   "add.task": {
     "header.title": "Create New Task"
   },
   "description": "Description",
+  "doing": "Doing",
+  "done": "Done",
   "select.date": "Select the date",
   "select.time": "Select time",
   "priority": "Priority",
+  "task-list.title": "My Task List",
   "tittle.task": "Tittle Task",
   "note": "Note",
   "from": "From",
@@ -24,6 +28,7 @@
   "at": "At",
   "reminder": "Reminder",
   "title": "Title",
+  "todo": "Todo",
   "name": "Name",
   "error": {
     "validation": {
@@ -34,6 +39,9 @@
     },
     "form": {
       "wrong.data": "Wrong data"
+    },
+    "list": {
+      "task": "Failed on get tasks"
     }
   },
   "submit": "Confirm",

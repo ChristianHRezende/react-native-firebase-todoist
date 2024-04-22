@@ -21,7 +21,7 @@ export const Container = ({
       <SafeAreaView
         className={`bg-light-background dark:bg-dark-background ${height}`}
         {...safeAreViewProps}>
-        <ScrollView {...scrollViewProps}>
+        <View {...scrollViewProps}>
           <View className={'container px-4 h-screen ' + viewClassname}>
             {initializing ? (
               <LottieView
@@ -34,7 +34,7 @@ export const Container = ({
               children
             )}
           </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     );
   }

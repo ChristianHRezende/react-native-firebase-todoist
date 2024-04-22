@@ -5,7 +5,7 @@ export type RootStackParamsList = {
   SignUp: undefined;
   SignIn: undefined;
   Welcome: undefined;
-  TaskForm: {
+  TaskForm?: {
     id?: Task['id'];
   };
 };

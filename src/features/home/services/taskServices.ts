@@ -1,8 +1,10 @@
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import firestore, {Filter} from '@react-native-firebase/firestore';
 
-import {CreateRequestTask, UpdateRequestTask} from './types';
+import {CreateRequestTask, SearchTaskParams, UpdateRequestTask} from './types';
 import {Task} from 'types/task';
+
+const FILTER = firestore.Filter;
 
 function getUserEmail() {
   const user = auth().currentUser;
@@ -44,15 +46,41 @@ export async function deleteTask(id: string) {
     .delete() as unknown as Promise<void>;
 }
 
-//TODO: Add filters
-export async function searchTasks() {
+//TODO: Paginate
+export async function searchTasks(params: SearchTaskParams) {
   const {email} = getUserEmail();
 
-  return firestore()
-    .collection('todos')
-    .doc(email ?? '')
-    .collection('data')
-    .get() as unknown as Promise<Task[]>;
+  const filters: ReturnType<typeof FILTER>[] = [];
+  if (params.done !== undefined) {
+    filters.push(FILTER('done', '==', params.done ? true : false));
+  }
+
+  function buildQuery() {
+    if (filters) {
+      return firestore()
+        .collection('todos')
+        .doc(email ?? '')
+        .collection('data')
+        .where(filters.length === 1 ? filters[0] : FILTER.or(...filters));
+    }
+    return firestore()
+      .collection('todos')
+      .doc(email ?? '')
+      .collection('data');
+  }
+
+  return buildQuery()
+    .get()
+    .then(response => {
+      if (response.empty) {
+        return [];
+      }
+      let data: Task[] = [];
+      response.forEach(documentSnapshot => {
+        data.push(documentSnapshot.data() as Task);
+      });
+      return data;
+    });
 }
 
 export async function getTaskById(id: string) {
