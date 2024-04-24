@@ -4,13 +4,14 @@ import * as styled from './TaskList.styled';
 import {Tabs, Typography} from 'components';
 import {useTranslation} from 'react-i18next';
 import {useState} from 'react';
-import {Task} from 'types/task';
+import {FirebaseTask, Task} from 'types/task';
 import {TaskListItem} from '../TaskListItem';
 interface TaskListProps {
   loading: boolean;
   error: boolean;
-  todoTaskList: Task[];
-  doneTaskList: Task[];
+  todoTaskList: FirebaseTask[];
+  doneTaskList: FirebaseTask[];
+  loadData: (type: 'todo' | 'done') => void;
 }
 
 enum TabEnum {
@@ -21,6 +22,7 @@ export const TaskList: React.FC<TaskListProps> = ({
   loading,
   todoTaskList,
   doneTaskList,
+  loadData,
 }) => {
   const {t} = useTranslation();
   const [selectedTab, setSelectedTab] = useState<TabEnum>(TabEnum.TODO);
@@ -47,12 +49,16 @@ export const TaskList: React.FC<TaskListProps> = ({
         <FlatList
           data={todoTaskList}
           renderItem={({item}) => <TaskListItem task={item} />}
+          className="h-full"
+          onScrollEndDrag={() => loadData('todo')}
         />
       ) : null}
       {selectedTab === TabEnum.DONE ? (
         <FlatList
           data={doneTaskList}
           renderItem={({item}) => <TaskListItem task={item} />}
+          className="h-full"
+          onScrollEndDrag={() => loadData('done')}
         />
       ) : null}
     </View>

@@ -1,4 +1,4 @@
-export type Task = {
+export interface Task {
   id: string;
   title: string;
   description: string;
@@ -8,7 +8,14 @@ export type Task = {
   reminder: Date;
   isReminded: boolean;
   done: boolean;
-};
+}
+
+export interface FirebaseTask
+  extends Omit<Task, 'startDateTime' | 'endDateTime' | 'reminder'> {
+  startDateTime: Timestamp;
+  endDateTime: Timestamp;
+  reminder: Timestamp;
+}
 
 export enum TaskPriority {
   HIGH = 'HIGH',

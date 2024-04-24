@@ -5,6 +5,5 @@ export type UpdateRequestTask = Partial<Task>;
 export interface SearchTaskParams {
   query?: string;
   done?: Task['done'];
-  page?: number;
-  limit?: number;
+  limit: number;
 }

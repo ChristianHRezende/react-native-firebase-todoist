@@ -9,6 +9,11 @@ declare global {
     className?: string;
   }
 
+  type Timestamp = {
+    nanoseconds: number;
+    toDate: () => Date;
+  };
+
   declare namespace TailwindConfig {
     interface Colors extends Omit<AppTheme.Colors, 'base' | 'background'> {
       dark: {

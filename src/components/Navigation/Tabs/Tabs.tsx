@@ -28,7 +28,8 @@ export const Tabs: React.FC<TabsProps> = ({data, className}) => {
           key={'tabs-item-' + title.split(' ').join('-')}
           accessibilityLabel={`tab ${title}`}>
           <TouchableOpacity onPress={onPress}>
-            <Typography customClassName={`${selected ? 'underline ' : ''}`}>
+            <Typography
+              customClassName={`${selected ? 'underline font-bold' : ''}`}>
               {title}
             </Typography>
           </TouchableOpacity>
