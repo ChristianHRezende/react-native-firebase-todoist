@@ -1,9 +1,11 @@
-import {useQuery} from '@tanstack/react-query';
-import {searchTasks} from 'features/home/services/taskServices';
-import {SearchTaskParams} from 'features/home/services/types';
-import {useEffect, useState, useTransition} from 'react';
+import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+import {useMutation, useQuery} from '@tanstack/react-query';
+import {searchTasks, updateTask} from 'features/home/services/taskServices';
+import {SearchTaskParams, UpdateTaskParams} from 'features/home/services/types';
+import {useCallback, useEffect, useState, useTransition} from 'react';
 import {useSSR, useTranslation} from 'react-i18next';
 import {useToast} from 'react-native-toast-notifications';
+import {FirebaseTask, Task} from 'types/task';
 
 export function useHomeScreen() {
   const toast = useToast();
@@ -19,7 +21,6 @@ export function useHomeScreen() {
     queryKey: ['searchUndoneTaskQuery', todoListParams],
     queryFn: () => searchTasks(todoListParams),
   });
-
   const doneListParams: SearchTaskParams = {
     done: true,
     limit: doneLimit,
@@ -28,6 +29,38 @@ export function useHomeScreen() {
     queryKey: ['searchDoneTaskQuery', doneListParams],
     queryFn: () => searchTasks(doneListParams),
   });
+
+  const onDoneMt = useMutation({
+    mutationFn: (params: UpdateTaskParams) => updateTask(params),
+  });
+
+  function onDone(task: FirebaseTask) {
+    if (!task) {
+      return;
+    }
+    const {startDateTime, endDateTime, reminder, id, ...restParams} = task;
+    onDoneMt.mutateAsync(
+      {
+        id,
+        data: {
+          ...restParams,
+          startDateTime: startDateTime.toDate(),
+          endDateTime: endDateTime.toDate(),
+          reminder: reminder.toDate(),
+          done: !restParams.done,
+        },
+      },
+      {
+        onSuccess: () => {
+          searchTodoTaskListData.refetch();
+          searchDoneTaskListData.refetch();
+        },
+        onError: () => {
+          toast.show('failed on try fetch done');
+        },
+      },
+    );
+  }
 
   const error =
     searchTodoTaskListData.isError || searchDoneTaskListData.isError;
@@ -44,6 +77,17 @@ export function useHomeScreen() {
     }
   }, [error]);
 
+  useFocusEffect(
+    useCallback(() => {
+      /// MARK:  On Focus
+      searchTodoTaskListData.refetch();
+      searchDoneTaskListData.refetch();
+      return () => {
+        /// MARK:  On unfocus
+      };
+    }, []),
+  );
+
   function loadData(type: 'todo' | 'done') {
     if (type === 'done') {
       setTodoLimit(oldProps => oldProps + 10);
@@ -58,5 +102,6 @@ export function useHomeScreen() {
     todoTaskList: todoTaskList ?? [],
     doneTaskList: doneTaskList ?? [],
     loadData,
+    onDone,
   };
 }

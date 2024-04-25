@@ -1,17 +1,20 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
 import * as styled from './TaskList.styled';
-import {Tabs, Typography} from 'components';
+import {CircularProgress, Tabs, Typography} from 'components';
 import {useTranslation} from 'react-i18next';
 import {useState} from 'react';
 import {FirebaseTask, Task} from 'types/task';
 import {TaskListItem} from '../TaskListItem';
+
 interface TaskListProps {
   loading: boolean;
   error: boolean;
   todoTaskList: FirebaseTask[];
   doneTaskList: FirebaseTask[];
   loadData: (type: 'todo' | 'done') => void;
+  navigate: (pageId: string, params: {id: string}) => void;
+  onDone: (task: FirebaseTask) => void;
 }
 
 enum TabEnum {
@@ -23,6 +26,8 @@ export const TaskList: React.FC<TaskListProps> = ({
   todoTaskList,
   doneTaskList,
   loadData,
+  navigate,
+  onDone,
 }) => {
   const {t} = useTranslation();
   const [selectedTab, setSelectedTab] = useState<TabEnum>(TabEnum.TODO);
@@ -39,28 +44,56 @@ export const TaskList: React.FC<TaskListProps> = ({
     },
   ];
 
+  function handlePressListItem(id: string) {
+    navigate('TaskDetails', {id});
+  }
+
+  function handleOnDoneCheck(task: FirebaseTask) {
+    onDone(task);
+  }
+
   return (
     <View>
       <Typography variant="lg" customClassName="my-2">
         {t('task-list.title')}
       </Typography>
       <Tabs data={tabs} />
-      {selectedTab === TabEnum.TODO ? (
-        <FlatList
-          data={todoTaskList}
-          renderItem={({item}) => <TaskListItem task={item} />}
-          className="h-full"
-          onScrollEndDrag={() => loadData('todo')}
-        />
-      ) : null}
-      {selectedTab === TabEnum.DONE ? (
-        <FlatList
-          data={doneTaskList}
-          renderItem={({item}) => <TaskListItem task={item} />}
-          className="h-full"
-          onScrollEndDrag={() => loadData('done')}
-        />
-      ) : null}
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <View>
+          {selectedTab === TabEnum.TODO ? (
+            <FlatList
+              data={todoTaskList}
+              keyExtractor={item => item.title + '-' + item.done}
+              renderItem={({item}) => (
+                <TaskListItem
+                  task={item}
+                  onPress={() => handlePressListItem(item.id)}
+                  onCheck={() => handleOnDoneCheck(item)}
+                />
+              )}
+              className="h-full"
+              // onScrollEndDrag={() => loadData('todo')}
+            />
+          ) : null}
+          {selectedTab === TabEnum.DONE ? (
+            <FlatList
+              data={doneTaskList}
+              keyExtractor={item => item.title + '-' + item.done}
+              renderItem={({item}) => (
+                <TaskListItem
+                  task={item}
+                  onPress={() => handlePressListItem(item.id)}
+                  onCheck={() => handleOnDoneCheck(item)}
+                />
+              )}
+              className="h-full"
+              onScrollEndDrag={() => loadData('done')}
+            />
+          ) : null}
+        </View>
+      )}
     </View>
   );
 };

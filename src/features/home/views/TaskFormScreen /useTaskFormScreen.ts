@@ -28,13 +28,15 @@ export default function useTaskFormScreen({id, reset}: useTaskFormScreenProps) {
 
   useEffect(() => {
     if (data?.id) {
-      const {startDateTime, endDateTime, ...restData} = data;
+      const {startDateTime, endDateTime, reminder, ...restData} = data;
       reset({
         ...restData,
-        startDate: startDateTime,
-        startTime: startDateTime,
-        endDate: endDateTime,
-        endTime: endDateTime,
+        startDate: startDateTime.toDate(),
+        startTime: startDateTime.toDate(),
+        endDate: endDateTime.toDate(),
+        endTime: endDateTime.toDate(),
+        reminder: reminder.toDate(),
+        reminderTime: reminder.toDate(),
       });
     }
   }, [data]);
@@ -44,7 +46,8 @@ export default function useTaskFormScreen({id, reset}: useTaskFormScreenProps) {
   });
 
   const updateTaskMt = useMutation({
-    mutationFn: (params: UpdateRequestTask) => updateTask(id ?? '', params),
+    mutationFn: (params: UpdateRequestTask) =>
+      updateTask({id: id ?? '', data: params}),
   });
 
   return {

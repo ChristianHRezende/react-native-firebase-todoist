@@ -13,6 +13,7 @@ import {RootStackParamsList} from 'types/navigation';
 import {
   SignInScreen,
   SignUpScreen,
+  TaskDetailsScreen,
   TaskFormScreen,
   WelcomeScreen,
 } from './features';
@@ -61,6 +62,7 @@ function App(): React.JSX.Element {
         />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="TaskForm" component={TaskFormScreen} />
+        <Stack.Screen name="TaskDetails" component={TaskDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

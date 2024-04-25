@@ -2,6 +2,7 @@
   "back": "Back",
   "cpf": "CPF",
   "email": "Email",
+  "endDateTime": "End Date Time",
   "get.started": "Get Started",
   "home": {
     "header.title": "Welcome to Notes",
@@ -20,6 +21,7 @@
   "task-list.title": "My Task List",
   "tittle.task": "Tittle Task",
   "note": "Note",
+  "not.reminded": "Waiting",
   "from": "From",
   "to": "To",
   "high": "HIGH",
@@ -44,6 +46,7 @@
       "task": "Failed on get tasks"
     }
   },
+  "startDateTime": "Start Date Time",
   "submit": "Confirm",
   "success": "Success",
   "sign.in": "Sign In",

@@ -13,6 +13,7 @@ const shema = z.object({
   priority: z.nativeEnum(TaskPriority),
   reminder: z.date().min(dayjs().toDate(), t('error.validation.min')),
   reminderTime: z.date().min(dayjs().toDate(), t('error.validation.min')),
+  done: z.boolean(),
 });
 
 export default shema;

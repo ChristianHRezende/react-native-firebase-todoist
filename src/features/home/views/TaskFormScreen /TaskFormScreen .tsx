@@ -52,6 +52,7 @@ export const TaskFormScreen = ({navigation, route}: TaskFormScreenProps) => {
       priority: TaskPriority.HIGH,
       reminder: dayjs().toDate(),
       reminderTime: dayjs().toDate(),
+      done: false,
     },
   });
   const watchStartDate = watch('startDate');

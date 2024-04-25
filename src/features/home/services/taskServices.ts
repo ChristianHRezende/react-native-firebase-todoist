@@ -1,7 +1,12 @@
 import auth from '@react-native-firebase/auth';
 import firestore, {Filter} from '@react-native-firebase/firestore';
 
-import {CreateRequestTask, SearchTaskParams, UpdateRequestTask} from './types';
+import {
+  CreateRequestTask,
+  SearchTaskParams,
+  UpdateRequestTask,
+  UpdateTaskParams,
+} from './types';
 import {FirebaseTask, Task} from 'types/task';
 
 const FILTER = firestore.Filter;
@@ -24,7 +29,7 @@ export async function createTask(data: CreateRequestTask) {
     .add(data) as unknown as Promise<void>;
 }
 
-export async function updateTask(id: string, data: UpdateRequestTask) {
+export async function updateTask({id, data}: UpdateTaskParams) {
   const {email} = getUserEmail();
 
   return firestore()
@@ -81,7 +86,10 @@ export async function searchTasks({done, query, limit}: SearchTaskParams) {
       }
       let data: FirebaseTask[] = [];
       response.forEach(documentSnapshot => {
-        data.push(documentSnapshot.data() as FirebaseTask);
+        data.push({
+          ...documentSnapshot.data(),
+          id: documentSnapshot.id,
+        } as FirebaseTask);
       });
       return data;
     });
@@ -95,5 +103,11 @@ export async function getTaskById(id: string) {
     .doc(email ?? '')
     .collection('data')
     .doc(id)
-    .get() as unknown as Promise<FirebaseTask>;
+    .get()
+    .then(documentSnapshot => {
+      if (!documentSnapshot.exists) {
+        return null;
+      }
+      return documentSnapshot.data() as FirebaseTask;
+    });
 }

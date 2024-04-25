@@ -7,5 +7,9 @@ export type RootStackParamsList = {
   Welcome: undefined;
   TaskForm?: {
     id?: Task['id'];
+    refetch: () => void;
+  };
+  TaskDetails: {
+    id?: Task['id'];
   };
 };

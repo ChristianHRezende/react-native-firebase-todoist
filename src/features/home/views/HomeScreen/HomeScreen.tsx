@@ -17,18 +17,18 @@ export type HomeScreenProps = NativeStackScreenProps<
 export const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {t} = useTranslation();
   const {navigate} = navigation;
+  const taskListData = useHomeScreen();
+
   function handleAddTaskPress() {
     navigate('TaskForm');
   }
-
-  const taskListData = useHomeScreen();
 
   return (
     <View>
       <HomeHeader variant="menu" />
       <Container screen>
         <Typography>{t('home.home')}</Typography>
-        <TaskList {...taskListData} />
+        <TaskList {...taskListData} navigate={navigate} />
       </Container>
       <HomeBottomMenu onAddTaskPress={handleAddTaskPress} />
     </View>

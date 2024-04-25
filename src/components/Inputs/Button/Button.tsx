@@ -1,4 +1,4 @@
-import {Typography} from 'components';
+import {CircularProgress, Typography} from 'components';
 import React from 'react';
 import {ButtonProps as RNButtonProps} from 'react-native';
 
@@ -11,6 +11,7 @@ interface ButtonProps extends BaseComponentPropsWithChildren, RNButtonProps {
   color?: AppTheme.AppColorsType;
   customClassName?: string;
   size?: 'small' | 'medium' | 'large';
+  loading?: boolean;
 }
 
 const styledButtonSizes = {
@@ -26,6 +27,7 @@ export const Button = ({
   customClassName,
   size = 'large',
   disabled,
+  loading,
   ...restProps
 }: ButtonProps) => {
   const colorTheme = getButtonColor(disabled ? 'gray' : color);
@@ -40,20 +42,28 @@ export const Button = ({
         className={classNames}
         disabled={disabled}
         {...restProps}>
-        <Typography
-          color="background"
-          variant={sizeButton.fontVariant as TypographyVariant}>
-          {title}
-        </Typography>
+        {loading ? (
+          <CircularProgress circleClassName="secondary" />
+        ) : (
+          <Typography
+            color="background"
+            variant={sizeButton.fontVariant as TypographyVariant}>
+            {title}
+          </Typography>
+        )}
       </Styled.ContainedButton>
     );
   }
 
   return (
     <Styled.TextButton {...restProps}>
-      <Typography color="primary" variant="2xl">
-        {title}
-      </Typography>
+      {loading ? (
+        <CircularProgress circleClassName="secondary" />
+      ) : (
+        <Typography color="primary" variant="2xl">
+          {title}
+        </Typography>
+      )}
     </Styled.TextButton>
   );
 };
