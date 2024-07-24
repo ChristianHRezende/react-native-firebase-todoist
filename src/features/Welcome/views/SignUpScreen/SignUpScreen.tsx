@@ -1,5 +1,5 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import {Button, Container, FormTextInput} from 'components';
+import {Button, Container, FormTextInput} from '@/components';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
@@ -7,8 +7,8 @@ import {useTranslation} from 'react-i18next';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useMutation} from '@tanstack/react-query';
 import {useToast} from 'react-native-toast-notifications';
-import {signUp} from 'services';
-import {RootStackParamsList} from 'types/navigation';
+import {signUp} from '@/services';
+import {RootStackParamsList} from '@/types/navigation';
 import schema from './schema';
 
 type SignUpScreenProps = NativeStackScreenProps<RootStackParamsList, 'SignUp'>;
@@ -60,6 +60,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
             <FormTextInput
               {...fieldProps}
               className="mb-2"
+              testID="name"
               placeholder={t('name')}
               onChangeText={field.onChange}
               error={!!errors.name}
@@ -86,6 +87,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
               keyboardType="email-address"
               textContentType="emailAddress"
               autoCapitalize={'none'}
+              testID="email"
             />
           );
         }}
@@ -105,6 +107,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
               onChangeText={field.onChange}
               error={!!errors.cpf}
               helperText={errors.cpf?.message}
+              testID="cpf"
             />
           );
         }}
@@ -125,6 +128,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
               error={!!errors.password}
               helperText={errors.password?.message}
               secureTextEntry
+              testID="password"
             />
           );
         }}

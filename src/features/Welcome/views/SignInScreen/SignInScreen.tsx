@@ -1,5 +1,5 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import {Button, Container, FormTextInput} from 'components';
+import {Button, Container, FormTextInput} from '@/components';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
@@ -7,8 +7,8 @@ import {useTranslation} from 'react-i18next';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useMutation} from '@tanstack/react-query';
 import {useToast} from 'react-native-toast-notifications';
-import {signIn} from 'services';
-import {RootStackParamsList} from 'types/navigation';
+import {signIn} from '@/services';
+import {RootStackParamsList} from '@/types/navigation';
 import schema from './schema';
 
 type SignInScreenProps = NativeStackScreenProps<RootStackParamsList, 'SignIn'>;
