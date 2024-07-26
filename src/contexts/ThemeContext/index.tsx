@@ -7,7 +7,7 @@ import React, {
   useMemo,
 } from 'react';
 import {useColorScheme as useRNColorScheme} from 'react-native';
-import tailwindConfig from '../../../tailwind.config';
+import tailwindConfig from '../../../tailwind.config.cjs';
 
 const configColors = tailwindConfig.theme?.extend
   ?.colors as unknown as TailwindConfig.Colors;

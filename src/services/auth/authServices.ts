@@ -17,3 +17,7 @@ export type SignUpParams = {
 export async function signUp({email, password}: SignUpParams) {
   return auth().createUserWithEmailAndPassword(email, password);
 }
+
+export async function signOut() {
+  return auth().signOut();
+}

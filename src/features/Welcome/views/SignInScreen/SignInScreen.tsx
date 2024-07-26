@@ -1,19 +1,20 @@
-import {zodResolver} from '@hookform/resolvers/zod';
 import {Button, Container, FormTextInput} from '@/components';
+import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
 
+import {signIn} from '@/services';
+import {RootStackParamsList} from '@/types/navigation';
+import capitalize from '@/utils/format/capitalize';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useMutation} from '@tanstack/react-query';
 import {useToast} from 'react-native-toast-notifications';
-import {signIn} from '@/services';
-import {RootStackParamsList} from '@/types/navigation';
 import schema from './schema';
 
 type SignInScreenProps = NativeStackScreenProps<RootStackParamsList, 'SignIn'>;
 
-export const SignInScreen = ({}: SignInScreenProps) => {
+export const SignInScreen = ({navigation}: SignInScreenProps) => {
   const {t} = useTranslation();
   const toast = useToast();
   const {
@@ -27,6 +28,7 @@ export const SignInScreen = ({}: SignInScreenProps) => {
       password: '',
     },
   });
+  const {navigate} = navigation;
 
   const signInMt = useMutation({
     mutationFn: (params: {email: string; password: string}) => signIn(params),
@@ -36,6 +38,7 @@ export const SignInScreen = ({}: SignInScreenProps) => {
     signInMt.mutateAsync(values, {
       onSuccess: () => {
         toast.show(t('success'));
+        navigate('Home');
       },
       onError: () => {
         toast.show(t('error.form.wrong.data'), {
@@ -62,6 +65,7 @@ export const SignInScreen = ({}: SignInScreenProps) => {
               error={!!errors.email}
               helperText={errors.email?.message}
               keyboardType="email-address"
+              testID={`input${capitalize(fieldProps.name)}`}
               textContentType="emailAddress"
               autoCapitalize={'none'}
             />
@@ -84,11 +88,13 @@ export const SignInScreen = ({}: SignInScreenProps) => {
               error={!!errors.password}
               helperText={errors.password?.message}
               secureTextEntry
+              testID={`input${capitalize(fieldProps.name)}`}
             />
           );
         }}
       />
       <Button
+        testID="submitButton"
         variant="contained"
         title={t('submit')}
         customClassName="self-center"

@@ -2,15 +2,19 @@
   "name": "Todoist",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "reset-cache": "react-native start --reset-cache",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "e2e-test:ios": "DETOX_CONFIGURATION=ios.sim.debug node_modules/.bin/cucumber-js ./e2e/features",
+    "e2e-build:ios": "detox build --configuration ios.sim.debug"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^10.8.0",
     "@hookform/resolvers": "^3.3.4",
     "@react-native-community/datetimepicker": "^7.6.4",
     "@react-native-firebase/app": "^19.1.2",

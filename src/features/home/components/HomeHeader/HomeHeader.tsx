@@ -1,12 +1,13 @@
+import {signOut} from '@/services';
 import UserImage from 'assets/images/user-face.png';
-import {Typography} from 'components';
+import {Typography} from '@/components';
+import {useThemeContext} from '@/contexts/ThemeContext';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, View} from 'react-native';
 import {useToast} from 'react-native-toast-notifications';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as S from './HomeHeader.styled';
-import {useThemeContext} from 'contexts/ThemeContext';
 
 type HomeHeaderVariant = 'menu' | 'back';
 
@@ -34,7 +35,7 @@ export const HomeHeader: React.FC<HomeHeaderProps> = ({
   const {colors} = useThemeContext();
   const toast = useToast();
   const handleDrawerButtonMenuPress = () => {
-    toast.show('WIP');
+    signOut();
   };
   const userImageHidden = variant !== 'menu';
   function handleBackPress() {
